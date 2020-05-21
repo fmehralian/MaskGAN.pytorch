@@ -6,7 +6,7 @@ from mgan.utils.sequence_recovery import pretty_print
 from mgan.optim import ClippedAdam
 import random
 from tqdm import tqdm
-from fairseq.meters import AverageMeter
+from fairseq.logging.meters import AverageMeter
 
 def _tqdm(length, desc):
     pbar = tqdm(
@@ -17,7 +17,7 @@ def _tqdm(length, desc):
 
 class MGANTrainer:
     def __init__(self, args, task, saver, logger, vocab):
-        device = torch.device("cuda")
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.pretrain = False
         self.saver = saver
         self.logger = logger
