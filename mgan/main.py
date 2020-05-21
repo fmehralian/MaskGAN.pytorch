@@ -13,8 +13,8 @@ import random
 
 
 # FairSeq imports
-from fairseq.meters import AverageMeter
-from fairseq.progress_bar import tqdm_progress_bar
+from fairseq.logging.meters import AverageMeter
+# from fairseq.logging.progress_bar import tqdm_progress_bar
 
 from mgan.preproc import Preprocess, mask, tokenize
 from mgan.data import IMDbDataset, TensorIMDbDataset
