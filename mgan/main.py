@@ -35,7 +35,7 @@ def main(args):
     n_devices = torch.cuda.device_count()
     max_tokens = max_tokens_per_device * n_devices
     truncate_length = 20
-    batch_size = int(max_tokens/truncate_length)
+    batch_size = max(1, int(max_tokens/truncate_length))
 
     checkpoint_path = "~/Desktop/testset_haorui/jerin/mgan-attempts/"
     saver = Saver(checkpoint_path)
