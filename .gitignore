@@ -6,3 +6,5 @@ __pycache__/
 .*.swo
 
 datasets/
+.idea
+.DS_Store
