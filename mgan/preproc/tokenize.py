@@ -33,7 +33,7 @@ class SentencePieceTokenizer:
     def __call__(self, text):
         tokens = self.sp.EncodeAsPieces(text)
 
-        to_utf = lambda x: x.decode("utf-8") 
+        to_utf = lambda x: x #.decode("utf-8")
         stokens = list(map(to_utf, tokens))
 
         wanted = lambda s: s in self.vocab
