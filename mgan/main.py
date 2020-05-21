@@ -37,7 +37,7 @@ def main(args):
     truncate_length = 20
     batch_size = max(1, int(max_tokens/truncate_length))
 
-    checkpoint_path = "~/Desktop/testset_haorui/jerin/mgan-attempts/"
+    checkpoint_path = "../data/mgan-attempts/"
     saver = Saver(checkpoint_path)
 
     train_path = os.path.join(args.path, 'train')
@@ -91,8 +91,8 @@ def main(args):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('--path', required=True)
-    parser.add_argument('--spm_prefix', required=True)
+    parser.add_argument('--path', default='../datasets/aclImdb/')
+    parser.add_argument('--spm_prefix', default='../datasets/aclImdb/train/imdb')
     parser.add_argument('--criterion', default='dummy')
     parser.add_argument('--max_epochs', type=int,  default=10)
     parser.add_argument('--validate_every', type=int,  default=5)
