@@ -74,7 +74,5 @@ python3 -m visdom.server &
 Run the training script.
 
 ```
-python3 -m mgan.main \
-  --path datasets/aclImdb/train/ \
-  --spm_path datasets/aclImdb/train/imdb
+python3 -m mgan.main --path datasets/aclImdb/ --spm_prefix datasets/aclImdb/train/imdb
 ```
