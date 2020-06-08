@@ -7,13 +7,23 @@ from tqdm import tqdm
 from copy import deepcopy
 from .imdb_dataset import IMDbDataset
 import bisect
+import pickle
 
 class IMDbEnhancedDataset(IMDbDataset):
     def __init__(self, path, tokenizer, truncate):
         self.dataset = IMDbDataset(path)
         self.tokenizer = tokenizer
-        self._length = self.build_inverse_index(truncate)
+        self.load_path = os.path.join(path, "enhances-saved.pkl")
+        if os.path.exists(self.load_path):
+            with open(self.load_path, "rb") as f:
+                self._length, self.cumulative = pickle.load(f)
+        else:
+            self._length = self.build_inverse_index(truncate)
+            data = (self._length, self.cumulative)
+            with open(self.load_path, "wb") as f:
+                pickle.dump(data, f)
         self.truncate = truncate
+
 
     def __len__(self):
         return self._length

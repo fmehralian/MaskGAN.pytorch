@@ -55,7 +55,13 @@ def main(args):
     task = Task(source_dictionary=vocab,
             target_dictionary=vocab)
 
-    trainer = MGANTrainer(args, task, saver, visdom, vocab)
+    class mylogger():
+        def log(self, *args, **kwargs):
+            print(*args,**kwargs)
+
+    # logger = visdom
+    logger = mylogger()
+    trainer = MGANTrainer(args, task, saver, logger, vocab)
     def loader(dataset):
         _loader = DataLoader(dataset, batch_size=batch_size,
                 collate_fn=TensorIMDbDataset.collate,

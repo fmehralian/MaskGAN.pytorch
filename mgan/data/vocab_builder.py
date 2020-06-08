@@ -19,8 +19,10 @@ class VocabBuilder:
     def build_vocab(self):
         print('vocab path:',self.vocab_path)
         if os.path.exists(self.vocab_path):
+            print("Loading vocab...")
             self._vocab = Dictionary.load(self.vocab_path)
         else:
+            print("Building vocab...")
             self.rebuild_vocab()
 
     def rebuild_vocab(self):
